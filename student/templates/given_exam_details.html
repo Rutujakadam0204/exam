@@ -1,0 +1,49 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block title %}
+<title>User Registration</title>
+{% endblock %}
+
+{% block container %}
+<br><br>
+
+<div class="container-fluid">
+    <h3>Given Exam Details:</h3>
+
+    <table class="table table-striped-columns">
+        <thead>
+            <tr>
+                <th>Exam Type</th>
+                <th>Student Name</th>
+                <th>Student Roll</th>
+                <th>Exam Date</th>
+                <th>From and To Exp</th>
+                <th>Exam PDF</th>
+                <th>Exam Submitted</th>
+                <th>Delete</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for i in given_exams %}
+                <tr>
+                    <td>{{i.exam_type.name}}</td>
+                    <td>{{i.student.first_name}} {{i.student.last_name}}</td>
+                    <td>{{i.student_roll}}</td>
+                    <td>{{i.exam_date}}</td>
+                    <td>{{i.from_exp}} - {{i.to_exp}}</td>
+                    <td>
+                        {% if i.answer_pdf_file %}
+                            <a href="{{i.answer_pdf_file.url}}">Exam PDF</a>
+                        {% else %}
+                            No PDF File
+                        {% endif %}</td>
+                    <td>{{i.exam_submitted}}</td>
+                    <td><a class="btn btn-danger" href="/student/exams-given-by-students/{{i.id}}">Remove</a> </td>
+                </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+
+</div>
+<script src="{% static 'js/user_registration.js' %}"></script>
+{% endblock %}

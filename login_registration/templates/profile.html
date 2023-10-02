@@ -1,0 +1,16 @@
+{%extends 'base.html'%}
+
+{%block container%}
+<div class="center">
+    Name : {{request.user.first_name}} {{request.user.last_name}}
+    <br>
+    {% if request.user.groups.all.0 == 'student' %}
+    Roll number : {{user_profile.roll_number}}
+    <br>
+    Start year : {{user_profile.start_year}}
+    <br>
+    End year : {{user_profile.end_year}}
+    {% endif %}
+    
+</div>
+{%endblock content%}

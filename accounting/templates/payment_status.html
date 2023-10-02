@@ -1,0 +1,14 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block title %}
+    <title>Payment Status</title>
+{% endblock %}
+
+{% block container %}
+
+    <div class="alert alert-danger" role="alert">
+      {{message}}
+    </div>
+
+{% endblock %}
+<p class="text-center">Don't have a account? <a href="{%url '/login-registration/login'%}">Login</a></p>

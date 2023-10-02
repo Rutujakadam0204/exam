@@ -1,0 +1,105 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block title %}
+<title>User Registration</title>
+{% endblock %}
+
+{% block container %}
+<br><br>
+
+<div class="container-fluid">
+    <form id="user_registration" enctype="multipart/form-data">
+        {% csrf_token %}
+
+        <div class="mb-3">
+            <input class="form-control" type="text" name="first_name" placeholder="First Name" required>
+        </div>
+        <div class="mb-3">
+            <input class="form-control" type="text" name="last_name" placeholder="Last Name" required>
+        </div>
+        <div class="mb-3">
+            <input class="form-control" type="email" name="email" placeholder="Email" required>
+        </div>
+        <div class="mb-3">
+            <input class="form-control" type="password" name="password" placeholder="password" required>
+        </div>
+        <div class="mb-3">
+            <input class="form-control" type="password" name="confirm_password" placeholder="confirm password" required>
+        </div>
+        <div class="mb-3">
+            <select class="form-control" name="group_type" required>
+                <option>Select Type</option>
+                <option value="student">Student</option>
+                <option value="staff">Staff</option>
+            </select>
+        </div>
+        <div class="mb-3">
+            <input class="form-control" type="text" name="roll_number" placeholder="Enter roll number (mandetory for students)">
+        </div>
+        <div class="mb-3">
+            <button class="btn btn-danger" type="submit">Submit</button>
+        </div>
+
+    </form>
+</div>
+<div>
+    Student table : <br>
+
+    <table class="table table-striped-columns">
+        <thead>
+            <tr>
+                <th>Name</th>
+                <th>Start Year</th>
+                <th>End Year</th>
+                <th>Login Allow</th>
+                <th>Roll Number</th>
+                <th>Delete</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for i in user_list %}
+                {% if i.user.groups.all.0.name == "student" %}
+                <tr>
+                    <td>{{i.user.first_name}} {{i.user.last_name}}</td>
+                    <td>{{i.start_year}}</td>
+                    <td>{{i.end_year}}</td>
+                    <td>
+                        {% if i.login_allow %}
+                            User can Login
+                        {% else %}
+                            User login expired
+                        {% endif %}
+                    </td>
+                    <td>{{i.roll_number}}</td>
+                    <td><a class="btn btn-danger" href="/user-registration/{{i.user.id}}">Remove</a> </td>
+                </tr>
+                {% endif %}
+            {% endfor %}
+        </tbody>
+    </table>
+<br><br>
+    Staff table : <br>
+
+    <table class="table table-striped-columns">
+        <thead>
+            <th>Name</th>
+            <th>Start Year</th>
+            <th>End Year</th>
+            <th>Remove</th>
+        </thead>
+        <tbody>
+            {% for i in user_list %}
+            {% if i.user.groups.all.0.name == "staff" %}
+            <tr>
+                <td>{{i.user.first_name}} {{i.user.last_name}}</td>
+                <td>{{i.start_year}}</td>
+                <td>{{i.end_year}}</td>
+                <td><a class="btn btn-danger" href="/user-registration/{{i.user.id}}">Remove</a> </td>
+            </tr>
+            {% endif %}
+            {% endfor %}
+        </tbody>
+    </table>
+</div>
+<script src="{% static 'js/user_registration.js' %}"></script>
+{% endblock %}

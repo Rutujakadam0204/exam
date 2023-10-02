@@ -1,0 +1,62 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block title %}
+<title>College Registration</title>
+{% endblock %}
+
+{% block container %}
+<br><br>
+<div class="container">
+    <h3>College Registration Form</h3>
+    <form id="college_registration" enctype="multipart/form-data">
+        {% csrf_token %}
+        <div class="mb-3">
+            <input class="form-control" type="text" name="first_name" required placeholder="First Name">
+        </div>
+
+        <div class="mb-3">
+            <input class="form-control" type="text" name="last_name" required placeholder="Last Name">
+        </div>
+
+        <div class="mb-3">
+            <input class="form-control" type="email" name="email" required placeholder="Personal Email">
+        </div>
+
+        <div class="mb-3">
+            <input class="form-control" type="password" name="password" required placeholder="password">
+        </div>
+
+        <div class="mb-3">
+            <input class="form-control" type="password" name="confirm_password" required placeholder="confirm password">
+        </div>
+
+        <div class="mb-3">
+            <input class="form-control" type="text" required name="college_name" placeholder="College Name">
+        </div>
+
+        <div class="mb-3">
+            <textarea class="form-control" name="address" cols="30" rows="10" placeholder="College Address"></textarea>
+        </div>
+
+        <div class="mb-3">
+            <input class="form-control" type="email" required name="college_email" placeholder="College Email">
+        </div>
+
+        <div class="mb-3">
+            <label for="formFile" class="form-label">Select your Logo</label>
+            <input class="form-control" id="formFile" type="file" name="logo">
+        </div>
+
+        <div class="mb-3">
+            <input class="form-control" type="number" required name="mobile_number" placeholder="Mobile Number">
+        </div>
+
+        <div class="mb-3">
+            <input class="form-control" type="number" required name="student_limit" placeholder="Student Limit">
+        </div>
+
+        <input class="btn btn-danger" type="submit" value="Register">
+    </form>
+</div>
+<script src="{% static 'js/college_registration.js' %}"></script>
+{% endblock %}

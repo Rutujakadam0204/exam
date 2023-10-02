@@ -1,0 +1,61 @@
+{% load static %}
+{% load user_group %}
+
+{% load rest_framework %}
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js" integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo=" crossorigin="anonymous"></script>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-4bw+/aepP/YC94hEpVNVgiZdgIC5+VKNBQNGCHeKRQN+PtmoHDEXuppvnDJzQIu9" crossorigin="anonymous">
+
+    <link rel="stylesheet" href="{% static 'style/base.css' %}">
+    {% block title %}
+    {% endblock %}
+</head>
+
+<body>
+
+
+  {% if messages %}
+      {% for message in messages %}
+        <script>
+          alert("{{ message }}")
+        </script>
+      {% endfor %}
+  {% endif %}
+
+    <nav class="navbar nav-color">
+      <div class="container-fluid">
+        <a class="navbar-brand text-white"></a>
+
+        <div class="d-flex">
+
+            {% if request.user.is_authenticated %}
+                {% if request.user.is_superuser %}
+                    <a class="btn btn-warning m-2" href="/product/home">Home</a>
+                    <a class="btn btn-warning m-2" href="/accounting/payment-setting">Payment</a>
+                {% endif %}
+                {% if request.user|has_group:"staff" %}
+                    <a class="btn btn-warning m-2" href="/user-registration">Add Student/Staff</a>
+                    <a class="btn btn-warning m-2" href="/student/exams-given-by-students">Given Exams</a>
+                {% else %}
+                    <a class="btn btn-warning m-2" href="/student/exam-details">Exam</a>
+                {% endif %}
+                <a class="btn btn-warning m-2" href="/logout">Logout</a>
+            {% else %}
+                <a class="btn btn-warning m-2" href="/login">Login</a>
+                <a class="btn btn-warning m-2" href="/college-registration">SignUp</a>
+            {% endif %}
+        </div>
+      </div>
+    </nav>
+    {% block container %}
+    {% endblock %}
+    <script src="{% static 'js/base.js' %}"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-HwwvtgBNo3bZJJLYd8oVXjrBZt8cqVSpeBNS5n7C8IVInixGAoxmnlMuBnhbgrkm" crossorigin="anonymous"></script>
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js" integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo=" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js" integrity="sha384-I7E8VVD/ismYTF4hNIPjVp/Zjvgyol6VFvRkX/vR+Vc4jQkC+hVqc2pM8ODewa9r" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/js/bootstrap.min.js" integrity="sha384-Rx+T1VzGupg4BHQYs2gCW9It+akI2MM/mndMCy36UVfodzcJcF0GGLxZIzObiEfa" crossorigin="anonymous"></script>
+</body>
+</html>

@@ -1,0 +1,85 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block title %}
+<title>Payment</title>
+{% endblock %}
+
+{% block container %}
+<br><br>
+<div class="container">
+    <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#contact-modal-label">PAY</button>
+
+    <div class="modal fade" id="contact-modal-label" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h1 class="modal-title fs-5" id="exampleModalLabel">Modal title</h1>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+
+                <div class="modal-body">
+                    <form action="{{ action }}" name="payuForm" method="post">
+                        {% csrf_token %}
+                        <input type="hidden" name="key" value="{{ key }}" />
+                        <input type="hidden" name="hash" value="{{ hash }}" />
+                        <input type="hidden" name="txnid" value="{{ txnid }}" />
+                        <input type="hidden" name="amount" value="{{ amount }}" />
+                        <input type="hidden" name="email" value="{{ email }}" />
+                        <input type="hidden" name="firstname" value="{{ firstname }}" />
+                        <input type="hidden" name="phone" value="{{ phone }}" />
+                        <input type="hidden" name="productinfo" value="{{ productinfo }}" />
+                        <input type="hidden" name="surl" value="{{ surl }}" />
+                        <input type="hidden" name="furl" value="{{ furl }}" />
+                        <input type="hidden" name="service_provider" value="{{ service_provider }}" />
+    
+                        <div class="form-group">
+                            <div class="col-md-12 col-sm-12">
+                                Amount : {{amount}}
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <div class="col-md-12 col-sm-12">
+                                Purpose : {{productinfo}}
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <div class="col-md-12 col-sm-12">
+                                Name : {{firstname}}
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <div class="col-md-12 col-sm-12">
+                                Email : {{email}}
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <div class="col-md-12 col-sm-12">
+                                Mobile : {{phone}}
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <div class="col-md-12 col-sm-12">
+                                Transaction ID : {{txnid}}
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <div class="col-md-12 col-sm-12" style="padding-bottom:20px;padding-top:20px;">
+                                After clicking 'Pay Now' button, you will be redirected to PayUMoney Secure Gateway.
+                            </div>
+                        </div>
+    
+                        <div class="form-group">
+                            <div class="col-md-12 col-sm-12">
+                                <input type="submit" class="btn btn-success btn-sm" value="Pay Now">
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+
+            
+        </div>
+    </div>
+</div>
+<script src="{% static 'js/login.js' %}"></script>
+{% endblock %}

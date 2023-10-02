@@ -1,0 +1,64 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block title %}
+<title>Home</title>
+{% endblock %}
+
+{% block container %}
+<br><br>
+<div class="container-fluid">
+    <div id="carouselExample" class="carousel slide">
+      <div class="carousel-inner">
+        <div class="carousel-item active">
+          <img height="400" src="{% static 'image/home.jpeg' %}" class="d-block w-100">
+        </div>
+      </div>
+    </div>
+    <br><br>
+    <div class="row">
+        <div class="col-2"></div>
+      <div class="card col-3">
+        <img src="{% static 'image/img.png' %}" class="card-img-top" alt="...">
+        <div class="card-body">
+          <h5 class="card-title">
+              Mrs.Gunjal Ashwini Prasad(M.Pharm QAT) lecturer,<br>
+              Vishal Junnar Seva Mandal's Institute of pharmacy, Ale.
+          </h5>
+          <p class="card-text">
+              Has Seven years experience in Academics.
+              Completed Diploma in Pharmacy from VJSM’s Institute of pharmacy for women, Ale,
+              B.Pharmacy was completed in 2014 from sharad chandra pawar college of pharmacy,
+              Otur. and M. Pharm in QAT was completed  form VJSM’s Institute of Pharmaceutical
+              Education and research, Ale.
+              Has attended various seminar , training, Conferences and faculty development  programs.
+
+          </p>
+          <p class="card-text"><small class="text-body-secondary"></small></p>
+        </div>
+      </div>
+        <div class="col-2"></div>
+
+      <div class="card col-3">
+        <img src="{% static 'image/img_1.png' %}" class="card-img-top" alt="...">
+        <div class="card-body">
+          <h5 class="card-title">
+            Ms. Anuradha Sagar Tajave (PhD, M.Pharm QAT)<br>
+            Principal, Vishal Junnar Seva Mandal’s Institute of Pharmacy for Women, Ale.
+          </h5>
+          <p class="card-text">
+              Has sixteen years’ experience in Academics.
+              Completed Diploma in Pharmacy from BVDU’s Institute of Pharmacy,
+              Erandawane Pune, B. Pharmacy was completed in 2007 from Poona college of Pharmacy,
+              Erandawane, Pune. M. Pharm in QAT was completed from VJSM’s Vishal Institute of Pharmaceutical
+              Education and research, Ale. Life member of APTI, IPA.
+              Delivered Guest lectures as subject expertise for Pharmacology & Toxicology,
+              Carrier opportunities in Pharmacy, etc.
+          </p>
+          <p class="card-text"><small class="text-body-secondary"></small></p>
+        </div>
+      </div>
+        <div class="col-2"></div>
+    </div>
+</div>
+<script src="{% static 'js/login.js' %}"></script>
+{% endblock %}

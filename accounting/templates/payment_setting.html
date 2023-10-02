@@ -1,0 +1,36 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block title %}
+<title>Payment setting</title>
+{% endblock %}
+
+{% block container %}
+<br><br>
+<div class="container">
+    <h3>Payment Credentials</h3>
+    <form action="/accounting/payment-setting/payment_settings" method="POST">
+        {% csrf_token %}
+        <div class="mb-3">
+            <input class="form-control" type="password" name="secret_key" placeholder="Enter secret key" value="{{payment_credentials.secret_key}}">
+        </div>
+        <div class="mb-3">
+            <input class="form-control" type="password" name="secret_id" placeholder="Enter secret id" value="{{payment_credentials.secret_id}}">
+        </div>
+        <div class="mb-3">
+            <button class="btn btn-danger" type="submit">Submit</button>
+        </div>
+    </form>
+
+    <br>
+    <h3>Price Per Student</h3>
+    <form action="/accounting/payment-setting/package_settings" method="POST">
+        {% csrf_token %}
+        <div class="mb-3">
+            <input class="form-control" type="number" name="price_per_student" placeholder="Enter price per student" value="{{package_setting.price_per_student}}">
+        </div>
+        <div class="mb-3">
+            <button class="btn btn-danger" type="submit">Submit</button>
+        </div>
+    </form>
+</div>
+{% endblock %}

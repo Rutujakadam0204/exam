@@ -1,0 +1,30 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block title %}
+<title>Invoices</title>
+{% endblock %}
+
+{% block container %}
+<br><br>
+<div class="container">
+    <table>
+        <thead>
+            <tr>
+                <th>No. of Students</th>
+                <th>Price</th>
+                <th>Payment Date</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for i in invoice %}
+                <tr>
+                    <td>{{i.student_limit}}</td>
+                    <td>{{i.price}}</td>
+                    <td>{{i.paid_on}}</td>
+                </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+</div>
+<script src="{% static 'js/login.js' %}"></script>
+{% endblock %}
