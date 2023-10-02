@@ -156,7 +156,7 @@ EMAIL_USE_TLS = True
 
 
 # set the celery broker url
-CELERY_BROKER_URL = 'amqp://localhost'
+CELERY_BROKER_URL = 'redis://red-ckdfqtkiibqc738jov0g:6379'
   
 # set the celery result backend
 # CELERY_RESULT_BACKEND = 'amqp://localhost'
@@ -166,9 +166,9 @@ CELERY_TIMEZONE = 'UTC'
 
 # set the celery broker url
 # CELERY_BROKER_URL = 'redis://localhost:8443'
-  
+
 # # set the celery result backend
 # CELERY_RESULT_BACKEND = 'redis://localhost:8443'
-  
+
 # # set the celery timezone
 # CELERY_TIMEZONE = 'UTC'
