@@ -102,8 +102,8 @@ def paymentview(request, token):
             context["phone"] = college.mobile_number
             context["service_provider"] = "payu_paisa"
             context['payment_gateway'] = 'payu'
-            context["furl"] = 'http://127.0.1:8000/accounting/payment_handler/fail/' + token
-            context["surl"] = 'http://127.0.1:8000/accounting/payment_handler/pass/' + token
+            context["furl"] = '/accounting/payment_handler/fail/' + token
+            context["surl"] = '/accounting/payment_handler/pass/' + token
         return render(request, 'payment.html', context)
     
 @csrf_exempt
