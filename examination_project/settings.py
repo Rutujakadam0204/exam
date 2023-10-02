@@ -79,14 +79,14 @@ WSGI_APPLICATION = 'examination_project.wsgi.application'
 
 # Database
 # https://docs.djangoproject.com/en/4.2/ref/settings/#databases
+import dj_database_url
 
-
-DATABASES = {
-    'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': BASE_DIR / 'db.sqlite3',
-    }
-}
+DATABASES = {}
+DATABASES['default'] = dj_database_url.config(
+    default='postgres://pharma_u0c5_user:aOTWTkA6mPjzgs1FBaRxlbwDE0gmCWCp@dpg-ckdf57ciibqc73behs6g-a.singapore-postgres.render.com/pharma_u0c5',
+    conn_max_age=600,
+    conn_health_checks=True,
+)
 
 
 # Password validation
